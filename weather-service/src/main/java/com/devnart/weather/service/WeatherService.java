@@ -11,11 +11,11 @@ import java.util.HashMap;
 @RequiredArgsConstructor
 public class WeatherService {
 
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     public Weather getWeather(String lat, String lon) {
         String url = "https://api.open-meteo.com/v1/forecast";
-        HashMap weather = webClient.get()
+        HashMap weather = webClientBuilder.build().get()
                 .uri(url + "?latitude=" + lat + "&longitude=" + lon + "&current_weather=true")
                 .retrieve()
                 .bodyToMono(HashMap.class)

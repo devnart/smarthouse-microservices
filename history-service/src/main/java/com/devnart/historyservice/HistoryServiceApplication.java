@@ -1,23 +1,18 @@
-package com.smart.house;
+package com.devnart.historyservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.server.WebServer;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-
 @SpringBootApplication
 @EnableEurekaClient
-public class DeviceServiceApplication {
+public class HistoryServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DeviceServiceApplication.class, args);
+        SpringApplication.run(HistoryServiceApplication.class, args);
     }
 
     @Bean
@@ -25,6 +20,4 @@ public class DeviceServiceApplication {
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }
-
-
 }

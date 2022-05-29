@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="history-service" />
+        <module name="api-gateway" />
         <module name="weather-service" />
         <module name="device-service" />
         <module name="discovery-service" />
@@ -16,6 +17,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
       <module name="device-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="history-service" options="-parameters" />

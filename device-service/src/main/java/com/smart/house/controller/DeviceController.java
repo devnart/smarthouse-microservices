@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/device")
 public class DeviceController {
 
     DeviceService deviceService;
@@ -21,28 +22,32 @@ public class DeviceController {
         this.deviceService = deviceService;
     }
 
-    @GetMapping("/devices")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Device> getAllDevices(){
         return deviceService.getAllDevices();
     }
 
-    @PostMapping("/device/add")
+    @GetMapping("/{id}")
+    public String getDevice(@PathVariable("id") int id){
+        return "Device with id: " + id + " is found";
+    }
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addDevice(@RequestBody Device device){
         deviceService.addDevice(device);
     }
 
-    @PutMapping("/device/setStatus/{id}")
+    @PutMapping("/setStatus/{id}")
     public ResponseEntity<String> setStatus(@PathVariable("id") String id, @RequestBody Device device){
         return deviceService.updateStatus(id, device);
     }
-    @PostMapping("/device/delete/{id}")
+    @PostMapping("/delete/{id}")
     public void deleteDevice(@PathVariable String id){
         deviceService.deleteDevice(id);
     }
 
-    @PutMapping("/device/update")
+    @PutMapping("/update")
     public void updateDevice(@RequestBody Device device){
         deviceService.updateDevice(device);
     }

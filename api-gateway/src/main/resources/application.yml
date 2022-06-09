@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id : device-service
+          uri : lb://device-service
+          predicates:
+            - Path=/api/device/**
+
+        - id : history-service
+          uri : lb://history-service
+          predicates:
+            - Path=/api/history/**
+          filters:
+            - SetPath=/history
+        - id : weather-service
+          uri : lb://weather-service
+          predicates:
+            - Path=/api/weather/**
+          filters:
+            - SetPath=/weather
